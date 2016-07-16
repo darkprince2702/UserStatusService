@@ -1,0 +1,9 @@
+<config>
+	<port>8000</port>
+	<ioThreadsNum>2</ioThreadsNum>
+	<workerThreadsNum>4</workerThreadsNum>
+	<blockNum>5</blockNum>
+	<blockSize>1024</blockSize>
+	<logInterval>60</logInterval>
+	<checkPoint>201607161111</checkPoint>
+</config>
