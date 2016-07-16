@@ -21,12 +21,12 @@ Log::Log() {
     fileChannel->setProperty("rotation", "1 M");
     consoleChannel = new Poco::ConsoleChannel();
     splitterChannel = new Poco::SplitterChannel();
-//    splitterChannel->addChannel(fileChannel);
+    splitterChannel->addChannel(fileChannel);
     splitterChannel->addChannel(consoleChannel);
     patternFormatter = new Poco::PatternFormatter();
     patternFormatter->setProperty("pattern", "%Y-%m-%d %H:%M:%S %s: %t");
     patternFormatter->setProperty("times", "local");
-    formattingChannel = new Poco::FormattingChannel(patternFormatter, fileChannel);
+    formattingChannel = new Poco::FormattingChannel(patternFormatter, splitterChannel);
     logger->setChannel(formattingChannel);
 }
 
@@ -39,4 +39,5 @@ void Log::write(std::string str) {
 
 void Log::setPath(std::string path) {
     fileChannel->setProperty("path", path);
+    assert(fileChannel->path() == path);
 }
