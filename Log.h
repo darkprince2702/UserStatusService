@@ -17,6 +17,7 @@
 #include <fstream>
 #include <assert.h>
 #include <mutex>
+#include <Poco/AutoPtr.h>
 #include <Poco/Logger.h>
 #include <Poco/FileChannel.h>
 #include <Poco/ConsoleChannel.h>
@@ -33,12 +34,12 @@ namespace userstatusservice {
         void write(std::string str);
         void setPath(std::string path);
     private:
-        Poco::Logger* logger;
-        Poco::FileChannel* fileChannel;
-        Poco::ConsoleChannel* consoleChannel;
-        Poco::SplitterChannel* splitterChannel;
-        Poco::PatternFormatter* patternFormatter;
-        Poco::FormattingChannel* formattingChannel;
+        Poco::AutoPtr<Poco::Logger> logger;
+        Poco::AutoPtr<Poco::FileChannel> fileChannel;
+        Poco::AutoPtr<Poco::ConsoleChannel> consoleChannel;
+        Poco::AutoPtr<Poco::SplitterChannel> splitterChannel;
+        Poco::AutoPtr<Poco::PatternFormatter> patternFormatter;
+        Poco::AutoPtr<Poco::FormattingChannel> formattingChannel;
         std::mutex mutex_;
     };
     

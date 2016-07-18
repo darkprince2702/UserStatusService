@@ -100,10 +100,11 @@ void Data::serialize(Archive& ar, const unsigned int version) {
     }
 
     for (int i = 0; i < blockNum_; i++) {
+        int32_t arraySize = blockSize_ / 8 + 1;
         if (Archive::is_loading::value) {
-            data_[i] = new int8_t[blockSize_];
+            data_[i] = new int8_t[arraySize];
         }
-        ar & boost::serialization::make_array<int8_t>(data_[i], blockSize_);
+        ar & boost::serialization::make_array<int8_t>(data_[i], arraySize);
     }
 }
 

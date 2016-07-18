@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Log.o \
 	${OBJECTDIR}/Timer.o \
 	${OBJECTDIR}/UserStatusService.o \
+	${OBJECTDIR}/UserStatusServiceHandler.o \
 	${OBJECTDIR}/UserStatusServiceServer.o \
 	${OBJECTDIR}/userstatusservice_constants.o \
 	${OBJECTDIR}/userstatusservice_types.o
@@ -93,6 +94,11 @@ ${OBJECTDIR}/UserStatusService.o: UserStatusService.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserStatusService.o UserStatusService.cpp
+
+${OBJECTDIR}/UserStatusServiceHandler.o: UserStatusServiceHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserStatusServiceHandler.o UserStatusServiceHandler.cpp
 
 ${OBJECTDIR}/UserStatusServiceServer.o: UserStatusServiceServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}

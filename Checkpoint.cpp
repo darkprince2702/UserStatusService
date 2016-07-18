@@ -40,7 +40,7 @@ Checkpoint::Checkpoint(std::string checkPoint, boost::shared_ptr<Data> data,
     data_ = data;
     log_ = log;
     config_ = config;
-    //    DOMWriter_ = new Poco::XML::DOMWriter();
+    setCheckpoint(checkPoint);
 }
 
 void Checkpoint::setCheckpoint(std::string newCheckPoint) {
